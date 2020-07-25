@@ -7,18 +7,12 @@ import java.util.Scanner;
 
 public class Average 
 {
-	static double calculateavg(List<Integer> list)
+	static void calculateavg(List<Integer> list)
 	{
-		Integer sum = 0;
-		if(!list.isEmpty()) 
-		{
-			for (Integer i : list) 
-			{
-		        sum += i;
-		    }
-		    return sum.doubleValue() / list.size();
-		}
-		return sum;
+		 list.stream() 
+	    .mapToInt(i -> i) 
+	    .average() 
+	    .ifPresent(avg -> System.out.println("Average found is " + avg));
 	}
 	public static void main(String args[])
 	{
@@ -31,7 +25,7 @@ public class Average
 		    int j = sc.nextInt();
 		    mylist.add(j);
 		}
-		System.out.println(calculateavg(mylist));
+		calculateavg(mylist);
 		
 	}
 
